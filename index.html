@@ -1,0 +1,791 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Natalie Danai Manhango 💖</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #633b58;
+      background: linear-gradient(135deg, #fff0f6, #f4e8ff, #fff7f0);
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .hero {
+      min-height: 92vh;
+      padding: 75px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font: 12px Arial, sans-serif;
+      color: #ad6690;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 76px);
+      color: #b34d83;
+      line-height: 1.12;
+      max-width: 950px;
+      animation: fadeDown 1.3s ease both;
+    }
+
+    .subtitle {
+      font-size: clamp(18px, 3vw, 25px);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 24px auto;
+    }
+
+    .date {
+      display: inline-block;
+      border: 1px solid #e6b6d2;
+      border-radius: 30px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.7);
+      margin: 12px 0 24px;
+      color: #984c79;
+      font: bold 15px Arial, sans-serif;
+    }
+
+    .button {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 40px;
+      padding: 15px 26px;
+      margin: 8px;
+      color: white;
+      font: bold 15px Arial, sans-serif;
+      background: linear-gradient(135deg, #e879a9, #a66bd6);
+      box-shadow: 0 7px 20px rgba(166, 107, 214, 0.25);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(166, 107, 214, 0.35);
+    }
+
+    .button.secondary {
+      color: #a34d7c;
+      background: #fff;
+      border: 1px solid #efc6dc;
+    }
+
+    section {
+      padding: 65px 20px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 5vw, 44px);
+      color: #b34d83;
+      margin-bottom: 15px;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      margin: 0 auto 32px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .music-card {
+      max-width: 650px;
+      margin: 15px auto;
+      padding: 30px 22px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid #f0c9df;
+      box-shadow: 0 12px 35px rgba(147, 81, 126, 0.1);
+    }
+
+    .music-icon {
+      font-size: 46px;
+      margin-bottom: 12px;
+      animation: musicBounce 2s infinite ease-in-out;
+    }
+
+    .music-card h3 {
+      color: #a64d7e;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .music-card p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1050px;
+      margin: 35px auto 0;
+    }
+
+    .photo-card {
+      background: white;
+      padding: 10px 10px 18px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(100, 53, 86, 0.12);
+      transition: transform 0.3s;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-6px) rotate(-1deg);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #f8dfea;
+    }
+
+    .photo-card p {
+      padding: 13px 4px 0;
+      font-size: 16px;
+      color: #a34d7c;
+    }
+
+    .memory-note {
+      margin-top: 25px;
+      font-style: italic;
+      font-size: 18px;
+    }
+
+    .letter-section {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .envelope-area {
+      max-width: 600px;
+      margin: 35px auto 0;
+    }
+
+    .envelope {
+      position: relative;
+      width: min(320px, 85vw);
+      height: 205px;
+      margin: 30px auto;
+      background: #e99abd;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(140, 67, 109, 0.2);
+      perspective: 800px;
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #f2bad3;
+      clip-path: polygon(0 0, 50% 57%, 100% 0);
+      z-index: 3;
+      transform-origin: top;
+      transition: transform 0.8s ease;
+    }
+
+    .envelope::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #d979a5;
+      clip-path: polygon(0 100%, 0 0, 50% 57%, 100% 0, 100% 100%);
+      border-radius: 8px;
+      z-index: 2;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-label {
+      position: absolute;
+      width: 100%;
+      top: 115px;
+      left: 0;
+      z-index: 4;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      pointer-events: none;
+      text-shadow: 0 1px 3px rgba(100, 30, 70, 0.2);
+    }
+
+    .letter {
+      display: none;
+      background: #fffdf9;
+      padding: 30px 24px;
+      border: 1px solid #efd3df;
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(100, 53, 86, 0.12);
+      line-height: 1.9;
+      font-size: 17px;
+      text-align: left;
+      animation: fadeUp 0.8s ease;
+    }
+
+    .letter.show {
+      display: block;
+    }
+
+    .letter h3 {
+      color: #b34d83;
+      text-align: center;
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      margin-top: 25px;
+      color: #b34d83;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .bible-card {
+      max-width: 800px;
+      margin: 30px auto 0;
+      padding: 35px 28px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 25px;
+      border: 1px solid #e8c8ec;
+      box-shadow: 0 12px 35px rgba(115, 70, 125, 0.1);
+    }
+
+    .bible-reference {
+      font: bold 13px Arial, sans-serif;
+      letter-spacing: 2px;
+      color: #a66bd6;
+      margin-bottom: 20px;
+    }
+
+    .verse {
+      font-size: clamp(18px, 3vw, 23px);
+      line-height: 1.9;
+      margin: 18px 0;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 1s, transform 1s;
+    }
+
+    .verse.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .closing {
+      padding: 75px 20px;
+      background: linear-gradient(135deg, #f8dce9, #eee0ff);
+    }
+
+    .closing h2 {
+      color: #b34d83;
+      font-size: clamp(30px, 6vw, 48px);
+      margin-bottom: 18px;
+    }
+
+    .closing p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 19px;
+      line-height: 1.9;
+    }
+
+    footer {
+      padding: 25px 15px;
+      color: #a36b8d;
+      font: 13px Arial, sans-serif;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -35px;
+      z-index: 20;
+      pointer-events: none;
+      animation: floatHeart linear forwards;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -15px;
+      z-index: 50;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes musicBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        min-height: 85vh;
+        padding-top: 60px;
+      }
+
+      section {
+        padding: 50px 16px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .photo-card img {
+        height: 210px;
+      }
+
+      .photo-card {
+        padding: 7px 7px 12px;
+      }
+
+      .photo-card p {
+        font-size: 14px;
+      }
+
+      .letter {
+        padding: 24px 19px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card img {
+        height: 300px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FLOATING HEARTS WILL APPEAR HERE -->
+
+  <header class="hero">
+    <p class="eyebrow">A little celebration of you ✨</p>
+
+    <h1>DANAI a.k.a Mai Dube 💖</h1>
+
+    <p class="subtitle">
+      Dadzo the most
+      beautiful blessings God has placed in my life.
+      Today, we celebrate YOU! 🌸
+    </p>
+
+    <div class="date">🎂 18 October 🎂</div>
+
+    <div>
+      <a href="#letter" class="button">Open Your Surprise 💌</a>
+      <a href="#memories" class="button secondary">Our Memories 📸</a>
+    </div>
+  </header>
+
+  <!-- MUSIC SECTION -->
+  <section id="music">
+    <div class="music-card reveal">
+      <div class="music-icon">🎶💗</div>
+
+      <h3>A Song for you</h3>
+
+      <p>
+        Some friendships are so special that even a song can
+        remind us how blessed we are to have each other.
+        This one is for you! 🥹💕
+      </p>
+
+      <a
+        class="button"
+        href="https://www.youtube.com/results?search_query=Johnny+Drille+How+Are+You+My+Friend+official+video"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ▶ Play Our Song 💕
+      </a>
+
+      <p style="font-size: 13px; margin-top: 15px; margin-bottom: 0;">
+        How Are You (My Friend) — Johnny Drille
+      </p>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section id="memories">
+    <h2 class="section-title reveal">Our Beautiful Memories 📸</h2>
+
+    <p class="section-intro reveal">
+      Every picture holds a little piece of a beautiful story.
+      I am grateful for the laughter, the love, and the memories
+      we continue to make together. 💕
+    </p>
+
+    <div class="gallery">
+
+      <div class="photo-card reveal">
+        <img src="photos/photo 1.jpg" alt="A beautiful memory">
+        <p>Beautiful inside and out 🌷</p>
+      </div>
+
+      <div class="photo-card reveal">
+        <img src="photos/photo 2.jpg" alt="A special memory">
+        <p>My sister by heart 💖</p>
+      </div>
+
+      <div class="photo-card reveal">
+        <img src="photos/photo 3.jpg" alt="A happy memory">
+        <p>A blessing in my life ✨</p>
+      </div>
+
+      <div class="photo-card reveal">
+        <img src="photos/photo 4.jpg" alt="A friendship memory">
+        <p>Memories I will treasure 🌸</p>
+      </div>
+
+      <div class="photo-card reveal">
+        <img src="photos/photo 5.jpg" alt="A precious memory">
+        <p>More laughter, more love 🥰</p>
+      </div>
+
+      <div class="photo-card reveal">
+        <img src="photos/photo 6.jpg" alt="A lovely memory">
+        <p>Forever grateful for you 💕</p>
+      </div>
+
+    </div>
+
+    <p class="memory-note reveal">
+      Different stories, one beautiful friendship. 💗
+    </p>
+  </section>
+
+  <!-- LETTER SECTION -->
+  <section class="letter-section" id="letter">
+    <h2 class="section-title reveal">A Letter Just for You 💌</h2>
+
+    <p class="section-intro reveal">
+      I have a little message for you. Tap the envelope to open it!
+    </p>
+
+    <div class="envelope-area reveal">
+
+      <button
+        class="envelope"
+        id="envelope"
+        type="button"
+        aria-label="Open your birthday letter"
+        aria-expanded="false"
+        aria-controls="birthdayLetter"
+      >
+        <span class="envelope-label" id="envelopeLabel">
+          Tap to open 💌
+        </span>
+      </button>
+
+      <div class="letter" id="birthdayLetter" aria-hidden="true">
+        <h3>Natty 💖</h3>
+
+        <p>Danisto,</p>
+
+        <p>
+          Happy birthday to someone who means so much more to me
+          than words can fully explain. You are not just a friend;
+          you are a sister my heart chose, and I thank God for
+          the gift of having you in my life.
+        </p>
+
+        <p>
+          On your special day, I pray that God fills your life
+          with peace, genuine happiness, good health, favour,
+          wisdom, and endless reasons to smile. May every door
+          that is meant for you open at the right time.
+        </p>
+
+        <p>
+          May you never forget how loved, valued, and special
+          you are. Even when life gets difficult, I pray you
+          always remember that you are never alone and that
+          beautiful things are still ahead of you.
+        </p>
+
+        <p>
+          Thank you for being you. Thank you for the memories,
+          the laughter, and the beautiful friendship we share.
+          I pray our bond continues to grow in love and grace.
+        </p>
+
+        <p>
+          Happy birthday, Mai Dube .
+          May this new chapter be one of your most beautiful
+          chapters yet. I love you dearly! 🥹💕
+        </p>
+
+        <p class="signature">
+          With all my love,<br>
+          Pippy 💖
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIBLE BLESSING -->
+  <section id="blessing">
+    <h2 class="section-title reveal">A Blessing Over Your Life 🙏🏽</h2>
+
+    <p class="section-intro reveal">
+      My prayer for you today and always is that God's hand
+      will remain upon your life.
+    </p>
+
+    <div class="bible-card reveal">
+      <p class="bible-reference">NUMBERS 6:24–26 · KJV</p>
+
+      <p class="verse">
+        “The LORD bless thee, and keep thee:”
+      </p>
+
+      <p class="verse">
+        “The LORD make his face shine upon thee,
+        and be gracious unto thee:”
+      </p>
+
+      <p class="verse">
+        “The LORD lift up his countenance upon thee,
+        and give thee peace.”
+      </p>
+
+      <p style="margin-top: 28px; color: #a34d7c; font-weight: bold;">
+        Amen. May this blessing follow you all the days of your life. 💗
+      </p>
+    </div>
+  </section>
+
+  <!-- CLOSING MESSAGE -->
+  <section class="closing">
+    <h2>Happy Birthday, Mai Dube! 🎂</h2>
+
+    <p>
+      May your days be filled with love, your heart with peace,
+      your path with God's guidance, and your future with
+      beautiful testimonies. You deserve to be celebrated
+      today and always. Keep shining, keep smiling, and keep
+      being the amazing person you are. 💖
+      <br><br>
+      <strong>Loving you always,</strong>
+      <br>
+      <strong>Pippy🌸</strong>
+    </p>
+
+    <div style="margin-top: 25px;">
+      <button class="button" id="celebrateButton" type="button">
+        Celebrate Her! 🎉
+      </button>
+
+      <a class="button secondary" href="#top"
+         onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+        Back to Top ↑
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Made with love by Pippy 💗 · A little website for a very special soul.
+  </footer>
+
+  <script>
+    // OPEN AND CLOSE THE ANIMATED ENVELOPE
+    const envelope = document.getElementById("envelope");
+    const birthdayLetter = document.getElementById("birthdayLetter");
+    const envelopeLabel = document.getElementById("envelopeLabel");
+
+    envelope.addEventListener("click", function () {
+      const isOpen = birthdayLetter.classList.toggle("show");
+
+      envelope.classList.toggle("open", isOpen);
+      envelope.setAttribute("aria-expanded", String(isOpen));
+      birthdayLetter.setAttribute("aria-hidden", String(!isOpen));
+
+      envelopeLabel.textContent = isOpen
+        ? "Your letter is open 💖"
+        : "Tap to open 💌";
+
+      if (isOpen) {
+        setTimeout(() => {
+          birthdayLetter.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }, 250);
+
+        makeConfetti(45);
+      }
+    });
+
+    // REVEAL ELEMENTS AS YOU SCROLL
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal, .verse").forEach(function (item) {
+      revealObserver.observe(item);
+    });
+
+    // FLOATING HEARTS
+    const heartSymbols = ["💗", "💕", "💖", "💘", "♡"];
+
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.className = "heart";
+      heart.textContent =
+        heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (14 + Math.random() * 17) + "px";
+      heart.style.animationDuration = (7 + Math.random() * 7) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 15000);
+    }
+
+    // Keep the page gentle and not too busy.
+    setInterval(createHeart, 1300);
+
+    // CONFETTI CELEBRATION
+    function makeConfetti(amount = 80) {
+      const symbols = ["💖", "✨", "🎉", "💕", "🌸"];
+
+      for (let i = 0; i < amount; i++) {
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+        piece.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.fontSize = (12 + Math.random() * 15) + "px";
+        piece.style.animationDuration = (2 + Math.random() * 3) + "s";
+        piece.style.animationDelay = (Math.random() * 1.2) + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 6500);
+      }
+    }
+
+    document.getElementById("celebrateButton").addEventListener("click", function () {
+      makeConfetti(100);
+    });
+  </script>
+
+</body>
+</html>
